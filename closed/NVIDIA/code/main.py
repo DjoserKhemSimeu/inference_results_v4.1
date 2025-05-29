@@ -45,6 +45,21 @@ from configs.configuration import ConfigRegistry
 
 
 
+import subprocess
+
+def run_bash_script(script_path):
+    try:
+        # Lancer le script Bash en arrière-plan
+        process = subprocess.Popen([script_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print("#################################################")
+        # Afficher le PID du processus
+        print(f"Script lancé en arrière-plan avec le PID : {process.pid}")
+
+    except Exception as e:
+        print(f"Une erreur s'est produite : {e}")
+
+
+
 def populate_config_registry(benchmarks: List[Benchmark], scenarios: List[Scenario]):
     # Load and validate all configs. Note that the validation step is done implicitly and automatically when the
     # BenchmarkConfiguration is loaded and registered. You can assume the config satisfies all applicable constraints in
@@ -232,9 +247,11 @@ if __name__ == "__main__":
     else:
         logging.info(f"Detected system ID: {MATCHED_SYSTEM}")
         main_args = parse_main_args()
-        measure = NvidiaSmiMeasure()
-        #measure.start()
+        script_start="/work/code/script_start_tx.sh"
+        script_stop="/work/code/script_stop_tx.sh"
+        #run_bash_script(script_start)
+
        
         main(main_args, DETECTED_SYSTEM)
-       
+        run_bash_script(script_stop)
         #measure.stop()

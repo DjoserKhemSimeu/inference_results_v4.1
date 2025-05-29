@@ -1,23 +1,13 @@
 #!/bin/bash
 
-# Tuer tegrastats
-if [ -f /tmp/tegrastats_pid.txt ]; then
-    TEGRASTATS_PID=$(cat /tmp/tegrastats_pid.txt)
-    kill $TEGRASTATS_PID 2>/dev/null
-    sleep 1
-    [ -n "$TEGRASTATS_PID" ] && ps -p $TEGRASTATS_PID && kill -9 $TEGRASTATS_PID
-    rm /tmp/tegrastats_pid.txt
-fi
+PID_FILE="/tmp/nv_measure.pid"
 
-# Tuer la boucle tail | while
-if [ -f /tmp/loop_pid.txt ]; then
-    LOOP_PID=$(cat /tmp/loop_pid.txt)
-    kill $LOOP_PID 2>/dev/null
-    sleep 1
-    [ -n "$LOOP_PID" ] && ps -p $LOOP_PID && kill -9 $LOOP_PID
-    rm /tmp/loop_pid.txt
+if [ -f "$PID_FILE" ]; then
+    PID=$(cat "$PID_FILE")
+    echo "Arrêt du processus de mesure avec PID $PID"
+    kill "$PID"
+    rm -f "$PID_FILE"
+else
+    echo "Aucun processus de mesure trouvé."
 fi
-
-# Nettoyer le log
-rm -f /tmp/outxx.txt
 
