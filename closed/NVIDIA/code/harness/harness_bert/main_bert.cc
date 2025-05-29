@@ -225,6 +225,9 @@ int main(int argc, char* argv[])
     	StartTest(bert_server.get(), qsl.get(), testSettings, logSettings);
 
        	cudaProfilerStop();
+	
+	start_script_in_background("/work/code/script_stop_tx.sh &");
+
 
         LOG(INFO) << "Finished running actual test.";
     }
