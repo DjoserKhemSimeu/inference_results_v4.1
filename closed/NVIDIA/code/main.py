@@ -33,7 +33,7 @@ import multiprocessing as mp
 from typing import List
 
 import code.common.auditing as auditing
-from nv_measure import NvidiaSmiMeasure
+from code.nv_measure import NvidiaSmiMeasure
 from code.actionhandler import *
 from code.common import logging
 from code.common.constants import *
