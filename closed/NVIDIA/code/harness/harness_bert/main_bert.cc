@@ -226,7 +226,7 @@ int main(int argc, char* argv[])
 
        	cudaProfilerStop();
 	
-	start_script_in_background("/work/code/script_stop_tx.sh &");
+	//start_script_in_background("/work/code/script_stop_tx.sh &");
 
 
         LOG(INFO) << "Finished running actual test.";

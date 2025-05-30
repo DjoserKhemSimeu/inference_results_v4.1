@@ -253,5 +253,5 @@ if __name__ == "__main__":
 
        
         main(main_args, DETECTED_SYSTEM)
-        #run_bash_script(script_stop)
+        run_bash_script(script_stop)
         #measure.stop()
