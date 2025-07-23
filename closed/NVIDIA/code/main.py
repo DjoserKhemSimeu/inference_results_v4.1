@@ -249,7 +249,7 @@ if __name__ == "__main__":
         main_args = parse_main_args()
         script_start="/work/code/script_start_tx.sh"
         script_stop="/work/code/script_stop_tx.sh"
-        #run_bash_script(script_start)
+        run_bash_script(script_start)
 
        
         main(main_args, DETECTED_SYSTEM)

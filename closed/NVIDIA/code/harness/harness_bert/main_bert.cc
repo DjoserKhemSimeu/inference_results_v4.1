@@ -218,7 +218,7 @@ int main(int argc, char* argv[])
 
         LOG(INFO) << "Starting running actual test.";
 
-	start_script_in_background("/work/code/script_start_tx.sh &");
+	//start_script_in_background("/work/code/script_start_tx.sh &");
        
        	cudaProfilerStart();
        
